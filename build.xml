@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<project default="main">	
+	 <target name="info">
+      <echo>Tummo Complier Pro</echo>
+	  <echo>Building library...</echo>
+	  <tstamp/>
+	  <echo>*************</echo>
+   </target>
+   
+    <!-- Deletes the existing build, docs And dist directory-->
+    <target name="clean">
+		<echo>Delete old folder...</echo>
+		<echo>*************</echo>
+        <delete dir="build/class" />
+        <delete dir="build/dist" />        
+    </target>
+
+    <!-- Creates the  build, docs And dist directory-->
+    <target name="makedir">
+		<echo>make new folder...</echo>
+		<echo>*************</echo>
+        <mkdir dir="build/class" />
+        <mkdir dir="build/dist" />        
+    </target>
+   		
+  	 <!-- Compiles the java code (including the usage of library For JUnit -->
+    <target name="compile" depends="clean, makedir">  
+		<path id="classpath.base">                                                                                                                           
+     <fileset dir="libs">                                                                                                                          
+         <include name="**/*.jar" />                                                                                                          
+     </fileset>                                                                                                                                   
+  </path>  
+		<jar jarfile="build/dist/jTime4X.jar" includes="**/*.java" basedir="src">
+            <manifest>                
+				<attribute name="Main-Class" value="com.tummosoft.jtime4x"/>
+
+            </manifest>   
+    	</jar>  		 
+    </target>   
+	
+    <target name="main" depends="compile">
+        <description>Main target</description>
+    </target>
+		</project>

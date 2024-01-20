@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<project default="main">		
+	 <target name="info">
+      <echo>Tummo Complier Pro</echo>
+	  <echo>Building library...</echo>
+	  <tstamp/>
+	  <echo>*************</echo>
+   </target>   
+ 
+	 <target name="javadoc">	
+	 <path id="classpath.base">                                                                                                                           
+     <fileset dir="libs">                                                                                                                          
+         <include name="**/*.jar" />                                                                                                          
+     </fileset>   
+	  <fileset dir="build/dist">                                                                                                                          
+         <include name="**/*.jar" />                                                                                                          
+     </fileset>  	 	 
+  </path>   	
+   <path id="sourcepath.base">                                                                                                                           
+     <fileset dir="src">                                                                                                                          
+         <include name="**/*.java" />                                                                                                          
+     </fileset>                                                                                                                                   
+  </path>  
+  <property name="clspath" refid="classpath.base"/>
+  <property name="source" refid="sourcepath.base"/>
+        <javadoc access="public" additionalparam="-b4atarget D:\B4J\Compiler\jTime4X\jTime4X\build\dist\jTime4X.xml"  classpath="${clspath}" sourcepath="src" packagenames="">			              
+            <doclet name="BADoclet" path="D:\B4J\Compiler\TUMMOC~2\B4J\TUMMOC~1\Objects"/>
+        </javadoc>
+    </target>
+	
+    <target name="main" depends="javadoc">
+        <description>Main target</description>
+    </target>
+		</project>

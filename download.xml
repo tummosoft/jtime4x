@@ -1,0 +1,35 @@
+
+	<project xmlns:ivy="antlib:org.apache.ivy.ant" default="download">
+    <property name="lib.dir" value="libs" />
+
+    <!-- output directories and files -->
+    <property name="build.dir" value="build" />
+    <property name="app.classes.dir" value="build/classes" />
+    
+    <!-- Ivy-related settings -->
+    <property name="ivy.install.version" value="2.4.0" />
+    <condition property="ivy.home" value="D:\B4J\Compiler\TUMMOC~2\B4J\BACKUP~1.18\TUMMOC~1\Objects/ant/lib">
+        <isset property="env.IVY_HOME" />
+    </condition>
+    <property name="ivy.home" value="D:\B4J\Compiler\TUMMOC~2\B4J\BACKUP~1.18\TUMMOC~1\Objects/ant/.ant" />
+    <property name="ivy.jar.dir" value="D:\B4J\Compiler\TUMMOC~2\B4J\BACKUP~1.18\TUMMOC~1\Objects/ant/lib" />
+    <property name="ivy.jar.file" value="D:\B4J\Compiler\TUMMOC~2\B4J\BACKUP~1.18\TUMMOC~1\Objects/ant/ivy-2.5.2.jar.jar" />
+
+    <presetdef name="project.javac">
+        <javac debug="on" includeantruntime="false" />
+    </presetdef>
+	
+    <target name="download" unless="offline">        
+       <tstamp/>
+	  		<echo>Downloading... https://repo1.maven.org/maven2/org/slf4j/jcl-over-slf4j/2.0.10/jcl-over-slf4j-2.0.10.jar</echo>
+			<get src="https://repo1.maven.org/maven2/org/slf4j/jcl-over-slf4j/2.0.10/jcl-over-slf4j-2.0.10.jar"
+             dest="libs" usetimestamp="true" />
+<tstamp/>
+	  		<echo>Downloading... https://repo1.maven.org/maven2/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar</echo>
+			<get src="https://repo1.maven.org/maven2/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar"
+             dest="libs" usetimestamp="true" />
+
+    </target>
+
+</project>
+	
